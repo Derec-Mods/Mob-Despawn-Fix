@@ -1,7 +1,6 @@
-name: LetMeDespawn
-version: '1.0-SNAPSHOT'
-main: me.contionability.letMeDespawn.LetMeDespawn
+name: Derex Despawn
+version: '1.0.0.0'
+main: io.github.derec4.derexDespawn.DerexDespawn
 api-version: '1.21'
-load: STARTUP
-authors: [ contionability ]
-description: Let Me Despawn
+authors: [ Derex ]
+description: Inspired by Let me Despawn (LMD), this plugin aims to optimize servers by despawning mobs cluttering the world by holding items.
