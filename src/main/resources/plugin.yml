@@ -4,3 +4,9 @@ main: io.github.derec4.derexDespawn.DerexDespawn
 api-version: '1.21'
 authors: [ Derex ]
 description: Inspired by Let me Despawn (LMD), this plugin aims to optimize servers by despawning mobs cluttering the world by holding items.
+
+commands:
+  ddespawn:
+    description: Main command for Derex Despawn
+    usage: /ddespawn <subcommand>
+    permission: derexdespawn.use
