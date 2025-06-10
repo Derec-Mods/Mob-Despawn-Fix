@@ -11,35 +11,32 @@ import java.util.Arrays;
 
 public class ConfigHandler {
     private final DerexDespawn plugin;
+    private boolean despawnBoat;
+    private boolean retroactiveDespawnCheck;
+    private boolean aggressiveDespawn;
 
     public ConfigHandler(DerexDespawn plugin) {
         this.plugin = plugin;
+        reload(); // Load config values on creation
     }
 
-    public void createConfigFile() {
-        File configFile = new File(plugin.getDataFolder(), "config.yml");
-
-        if (!configFile.exists()) {
-            plugin.getDataFolder().mkdirs();
-
-            try {
-                configFile.createNewFile();
-                FileConfiguration config = YamlConfiguration.loadConfiguration(configFile);
-                config.options().setHeader(Arrays.asList(
-                        "--------------------------------------------------",
-                        "DerexDespawn by Derex",
-                        "Report all ur troubles at the link below!",
-                        "coming soon",
-                        "--------------------------------------------------"));
-                config.set("retroactive-despawn-check", false);
-                config.save(configFile);
-            } catch (IOException e) {
-                Bukkit.getLogger().severe("Could not create config.yml for DerexDespawn!");
-                e.printStackTrace();
-            }
-        }
+    public void reload() {
+        plugin.reloadConfig();
+        FileConfiguration config = plugin.getConfig();
+        despawnBoat = config.getBoolean("despawn-boat", false);
+        retroactiveDespawnCheck = config.getBoolean("retroactive-despawn-check", false);
+        aggressiveDespawn = config.getBoolean("aggressive-despawn", false);
     }
 
+    public boolean isDespawnBoat() {
+        return despawnBoat;
+    }
 
+    public boolean isRetroactiveDespawnCheck() {
+        return retroactiveDespawnCheck;
+    }
 
+    public boolean isAggressiveDespawn() {
+        return aggressiveDespawn;
+    }
 }

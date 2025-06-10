@@ -4,4 +4,18 @@
 # coming soon"
 #--------------------------------------------------
 
+# Things that will remain default spawning behavior: named mobs, mobs in boats
+
+# Despawn mobs in boats
+despawn-boat: false
+
+# Despawn existing mobs that were marked persistent via holding items
 retroactive-despawn-check: false
+
+# Despawns mobs immediately on item pickup, respecting name rules
+aggressive-despawn: false
+
+# Items in this list will not be checked by the despawner
+blacklist:
+#  - diamond_sword
+#  - iron_ingot

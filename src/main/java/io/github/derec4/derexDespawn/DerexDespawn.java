@@ -6,12 +6,14 @@ import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class DerexDespawn extends JavaPlugin {
+    private ConfigHandler configHandler;
 
     @Override
     public void onEnable() {
         // Plugin startup logic
         saveDefaultConfig();
         reloadConfigValues();
+        configHandler = new ConfigHandler(this);
 
         Bukkit.getLogger().info("");
         Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "  |_______|                             " +
@@ -28,9 +30,5 @@ public final class DerexDespawn extends JavaPlugin {
 
     public void reloadConfigValues() {
         reloadConfig();
-    }
-
-    public void reloadPlugin() {
-        reloadConfigValues();
     }
 }
