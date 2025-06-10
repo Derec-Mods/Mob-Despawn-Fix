@@ -1,13 +1,7 @@
 package io.github.derec4.derexDespawn.handlers;
 
 import io.github.derec4.derexDespawn.DerexDespawn;
-import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.Arrays;
 
 public class ConfigHandler {
     private final DerexDespawn plugin;

@@ -37,4 +37,8 @@ public final class DerexDespawn extends JavaPlugin {
     public void reloadConfigValues() {
         configHandler.reload();
     }
+
+    public ConfigHandler getConfigHandler() {
+        return configHandler;
+    }
 }

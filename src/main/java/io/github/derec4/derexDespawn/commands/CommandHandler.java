@@ -6,6 +6,7 @@ import io.github.derec4.derexDespawn.commands.sub.PurgeCommand;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
+import org.bukkit.entity.Player;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -37,7 +38,7 @@ public class CommandHandler implements TabExecutor {
                 purgeCommand.execute(sender, args);
                 break;
             default:
-                sender.sendMessage("§cUnknown subcommand. Use /ddespawn <subcommand>");
+                sender.sendMessage("§cUnknown subcommand. Use /ddespawn <subcoxmmand>");
         }
         return true;
     }
