@@ -1,5 +1,5 @@
 name: Derex Despawn
-version: '1.0.0.0'
+version: '${version}'
 main: io.github.derec4.derexDespawn.DerexDespawn
 api-version: '1.21'
 authors: [ Derex ]
