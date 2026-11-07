@@ -1,6 +1,6 @@
-package io.github.derec4.derexDespawn.commands.sub;
+package io.github.derec4.mobdespawnfix.commands.sub;
 
-import io.github.derec4.derexDespawn.DerexDespawn;
+import io.github.derec4.mobdespawnfix.MobDespawnFix;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
@@ -14,9 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InfoCommand {
-    private final DerexDespawn plugin;
+    private final MobDespawnFix plugin;
 
-    public InfoCommand(DerexDespawn plugin) {
+    public InfoCommand(MobDespawnFix plugin) {
         this.plugin = plugin;
     }
 
@@ -63,7 +63,7 @@ public class InfoCommand {
             }
         }
 
-        sender.sendMessage("§6=== Derex Despawn Info ===");
+        sender.sendMessage("§6=== Mob Despawn Fix Info ===");
         sender.sendMessage("§7Total Monsters: §f" + totalMonsters);
         sender.sendMessage("§7Persistent Monsters: §e" + persistentMonsters);
         sender.sendMessage("§7Holding Items (Hoarders): §c" + holdingItemHoarders);

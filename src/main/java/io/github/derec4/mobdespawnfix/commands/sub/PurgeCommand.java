@@ -1,6 +1,6 @@
-package io.github.derec4.derexDespawn.commands.sub;
+package io.github.derec4.mobdespawnfix.commands.sub;
 
-import io.github.derec4.derexDespawn.DerexDespawn;
+import io.github.derec4.mobdespawnfix.MobDespawnFix;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
@@ -15,9 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PurgeCommand {
-    private final DerexDespawn plugin;
+    private final MobDespawnFix plugin;
 
-    public PurgeCommand(DerexDespawn plugin) {
+    public PurgeCommand(MobDespawnFix plugin) {
         this.plugin = plugin;
     }
 
@@ -100,3 +100,4 @@ public class PurgeCommand {
         return !plugin.getConfigHandler().isItemAllowedToDespawn(item.getType());
     }
 }
+

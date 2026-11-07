@@ -1,11 +1,10 @@
-package io.github.derec4.derexDespawn.listeners;
+package io.github.derec4.mobdespawnfix.listeners;
 
-import io.github.derec4.derexDespawn.DerexDespawn;
+import io.github.derec4.mobdespawnfix.MobDespawnFix;
 import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Monster;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -15,9 +14,9 @@ import org.bukkit.inventory.EntityEquipment;
 import org.bukkit.inventory.ItemStack;
 
 public class RetroactiveListener implements Listener {
-    private final DerexDespawn plugin;
+    private final MobDespawnFix plugin;
 
-    public RetroactiveListener(DerexDespawn plugin) {
+    public RetroactiveListener(MobDespawnFix plugin) {
         this.plugin = plugin;
     }
 

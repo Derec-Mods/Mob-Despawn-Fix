@@ -1,6 +1,6 @@
-package io.github.derec4.derexDespawn.handlers;
+package io.github.derec4.mobdespawnfix.handlers;
 
-import io.github.derec4.derexDespawn.DerexDespawn;
+import io.github.derec4.mobdespawnfix.MobDespawnFix;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 
@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Set;
 
 public class ConfigHandler {
-    private final DerexDespawn plugin;
+    private final MobDespawnFix plugin;
     private boolean despawnVehicle;
     private boolean retroactiveDespawnCheck;
     private boolean aggressiveDespawn;
@@ -20,7 +20,7 @@ public class ConfigHandler {
     private final Set<Material> whitelist = new HashSet<>();
     private final Set<Material> blacklist = new HashSet<>();
 
-    public ConfigHandler(DerexDespawn plugin) {
+    public ConfigHandler(MobDespawnFix plugin) {
         this.plugin = plugin;
         reload(); // Load config values on creation
     }
@@ -105,3 +105,4 @@ public class ConfigHandler {
         return whitelist.contains(material);
     }
 }
+

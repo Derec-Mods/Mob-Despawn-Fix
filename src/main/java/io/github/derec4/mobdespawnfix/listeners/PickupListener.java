@@ -1,6 +1,6 @@
-package io.github.derec4.derexDespawn.listeners;
+package io.github.derec4.mobdespawnfix.listeners;
 
-import io.github.derec4.derexDespawn.DerexDespawn;
+import io.github.derec4.mobdespawnfix.MobDespawnFix;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Monster;
@@ -12,9 +12,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public class PickupListener implements Listener {
-    private final DerexDespawn plugin;
+    private final MobDespawnFix plugin;
 
-    public PickupListener(DerexDespawn plugin) {
+    public PickupListener(MobDespawnFix plugin) {
         this.plugin = plugin;
     }
 

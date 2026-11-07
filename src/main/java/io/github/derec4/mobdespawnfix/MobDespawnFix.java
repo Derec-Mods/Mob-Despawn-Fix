@@ -1,16 +1,16 @@
-package io.github.derec4.derexDespawn;
+package io.github.derec4.mobdespawnfix;
 
-import io.github.derec4.derexDespawn.commands.CommandHandler;
-import io.github.derec4.derexDespawn.handlers.ConfigHandler;
-import io.github.derec4.derexDespawn.listeners.PickupListener;
-import io.github.derec4.derexDespawn.listeners.RetroactiveListener;
+import io.github.derec4.mobdespawnfix.commands.CommandHandler;
+import io.github.derec4.mobdespawnfix.handlers.ConfigHandler;
+import io.github.derec4.mobdespawnfix.listeners.PickupListener;
+import io.github.derec4.mobdespawnfix.listeners.RetroactiveListener;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Objects;
 
-public class DerexDespawn extends JavaPlugin {
+public class MobDespawnFix extends JavaPlugin {
     private ConfigHandler configHandler;
     private RetroactiveListener retroactiveListener;
 
@@ -20,8 +20,8 @@ public class DerexDespawn extends JavaPlugin {
         saveDefaultConfig();
         configHandler = new ConfigHandler(this);
 
-        Objects.requireNonNull(getCommand("ddespawn")).setExecutor(new CommandHandler(this));
-        Objects.requireNonNull(getCommand("ddespawn")).setTabCompleter(new CommandHandler(this));
+        Objects.requireNonNull(getCommand("mobdespawnfix")).setExecutor(new CommandHandler(this));
+        Objects.requireNonNull(getCommand("mobdespawnfix")).setTabCompleter(new CommandHandler(this));
 
         getServer().getPluginManager().registerEvents(new PickupListener(this), this);
         retroactiveListener = new RetroactiveListener(this);
@@ -31,7 +31,7 @@ public class DerexDespawn extends JavaPlugin {
         Bukkit.getLogger().info("");
         Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "  |_______|                             " +
                 "  ");
-        Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "  | Derex |     Derex Despawn v1.0.0");
+        Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "  | Derex |     Mob Despawn Fix v1.0.0");
         Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "  |_______|     Running on " + Bukkit.getName() + " - " + Bukkit.getVersion());
         Bukkit.getLogger().info("");
     }
@@ -52,3 +52,4 @@ public class DerexDespawn extends JavaPlugin {
         return configHandler;
     }
 }
+

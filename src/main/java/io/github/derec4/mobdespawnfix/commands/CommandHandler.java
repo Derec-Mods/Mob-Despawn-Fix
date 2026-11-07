@@ -1,9 +1,9 @@
-package io.github.derec4.derexDespawn.commands;
+package io.github.derec4.mobdespawnfix.commands;
 
-import io.github.derec4.derexDespawn.DerexDespawn;
-import io.github.derec4.derexDespawn.commands.sub.ReloadCommand;
-import io.github.derec4.derexDespawn.commands.sub.PurgeCommand;
-import io.github.derec4.derexDespawn.commands.sub.InfoCommand;
+import io.github.derec4.mobdespawnfix.MobDespawnFix;
+import io.github.derec4.mobdespawnfix.commands.sub.InfoCommand;
+import io.github.derec4.mobdespawnfix.commands.sub.PurgeCommand;
+import io.github.derec4.mobdespawnfix.commands.sub.ReloadCommand;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
@@ -14,12 +14,12 @@ import java.util.Collections;
 import java.util.List;
 
 public class CommandHandler implements TabExecutor {
-    private final DerexDespawn plugin;
+    private final MobDespawnFix plugin;
     private final ReloadCommand reloadCommand;
     private final PurgeCommand purgeCommand;
     private final InfoCommand infoCommand;
 
-    public CommandHandler(DerexDespawn plugin) {
+    public CommandHandler(MobDespawnFix plugin) {
         this.plugin = plugin;
         this.reloadCommand = new ReloadCommand(plugin);
         this.purgeCommand = new PurgeCommand(plugin);
@@ -28,13 +28,13 @@ public class CommandHandler implements TabExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!sender.hasPermission("derexdespawn.use")) {
+        if (!sender.hasPermission("mobdespawnfix.use") && !sender.hasPermission("derexdespawn.use")) {
             sender.sendMessage("§cYou do not have permission to execute this command.");
             return true;
         }
 
         if (args.length == 0) {
-            sender.sendMessage("§cUsage: /ddespawn <reload|purge|info>");
+            sender.sendMessage("§cUsage: /" + label + " <reload|purge|info>");
             return true;
         }
 
@@ -49,7 +49,7 @@ public class CommandHandler implements TabExecutor {
                 infoCommand.execute(sender, args);
                 break;
             default:
-                sender.sendMessage("§cUnknown subcommand. Use /ddespawn <reload|purge|info>");
+                sender.sendMessage("§cUnknown subcommand. Use /" + label + " <reload|purge|info>");
         }
         return true;
     }
@@ -69,3 +69,4 @@ public class CommandHandler implements TabExecutor {
         return Collections.emptyList();
     }
 }
+
