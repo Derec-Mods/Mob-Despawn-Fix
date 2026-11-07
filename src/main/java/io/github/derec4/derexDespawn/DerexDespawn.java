@@ -2,13 +2,14 @@ package io.github.derec4.derexDespawn;
 
 import io.github.derec4.derexDespawn.commands.CommandHandler;
 import io.github.derec4.derexDespawn.handlers.ConfigHandler;
+import io.github.derec4.derexDespawn.listeners.PickupListener;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Objects;
 
-public final class DerexDespawn extends JavaPlugin {
+public class DerexDespawn extends JavaPlugin {
     private ConfigHandler configHandler;
 
     @Override
@@ -20,6 +21,7 @@ public final class DerexDespawn extends JavaPlugin {
         Objects.requireNonNull(getCommand("ddespawn")).setExecutor(new CommandHandler(this));
         Objects.requireNonNull(getCommand("ddespawn")).setTabCompleter(new CommandHandler(this));
 
+        getServer().getPluginManager().registerEvents(new PickupListener(this), this);
 
         Bukkit.getLogger().info("");
         Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "  |_______|                             " +
