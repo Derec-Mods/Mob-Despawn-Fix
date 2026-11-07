@@ -12,7 +12,7 @@ Inspired by [Let Me Despawn](https://github.com/frikinjay/let-me-despawn) by fri
 
 ## Description
 
-In vanilla Minecraft, whenever a hostile mob (such as a Zombie, Skeleton, or Drowned) walks over and equips or picks up any dropped item from the ground, vanilla sets `PersistenceRequired: 1b` (`setRemoveWhenFarAway(false)`).
+In vanilla Minecraft, whenever a hostile mob (such as a Zombie, Skeleton, or Drowned) walks over and equips or picks up any dropped item from the ground, vanilla sets `PersistenceRequired: 1b` 
 
 Because of this mechanic, when players spend extended periods of time in an area, dark caves and aquifers beneath their bases gradually accumulate dozens or even hundreds of monsters that scooped up mob drops (rotten flesh, arrows, bones), chicken jockey eggs, or broken gravel. 
 
@@ -34,7 +34,6 @@ These monsters:
 * **Vehicle Protection:** Mobs contained inside boats, minecarts, or any vehicle are protected from despawning (ideal for iron farms, trading halls, and mob cages).
 * **Retroactive Cave Cleanup:** When added to established worlds where hundreds of mobs are already hoarding in caves, the plugin scans loaded chunks and cleanses pre-existing persistence from un-named hoarders.
 * **Live In-Game Diagnostics:** Includes built-in scanning tools (`/mdf info`) to diagnose hoarded mobs in loaded chunks, and a manual purge command (`/mdf purge`).
-* **Zero NMS / Ultra-Compatible:** Pure Spigot/Paper API implementation with zero bytecode manipulation or volatile NMS dependencies, ensuring broad cross-version stability (1.13.2 to 1.21+).
 
 ---
 
@@ -132,6 +131,5 @@ While the original *Let Me Despawn* mod tackled this on Forge/Fabric, the Paper/
 
 * **Original Mod Concept & Inspiration:** [frikinjay](https://github.com/frikinjay) ([Let Me Despawn](https://github.com/frikinjay/let-me-despawn))
 * **Paper Port Inspiration:** [contionability](https://github.com/contionability)
-* **Author & Maintainer:** [DerexXD / DereC4](https://github.com/DereC4) ([Derec-Mods](https://github.com/Derec-Mods))
+* **Author & Maintainer:** [DerexXD](https://github.com/DereC4) 
 
-This project is open-source and licensed under the **GNU Lesser General Public License v3.0 (LGPL-3.0)**.
