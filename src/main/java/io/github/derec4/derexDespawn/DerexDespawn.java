@@ -3,6 +3,7 @@ package io.github.derec4.derexDespawn;
 import io.github.derec4.derexDespawn.commands.CommandHandler;
 import io.github.derec4.derexDespawn.handlers.ConfigHandler;
 import io.github.derec4.derexDespawn.listeners.PickupListener;
+import io.github.derec4.derexDespawn.listeners.RetroactiveListener;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -11,6 +12,7 @@ import java.util.Objects;
 
 public class DerexDespawn extends JavaPlugin {
     private ConfigHandler configHandler;
+    private RetroactiveListener retroactiveListener;
 
     @Override
     public void onEnable() {
@@ -22,6 +24,9 @@ public class DerexDespawn extends JavaPlugin {
         Objects.requireNonNull(getCommand("ddespawn")).setTabCompleter(new CommandHandler(this));
 
         getServer().getPluginManager().registerEvents(new PickupListener(this), this);
+        retroactiveListener = new RetroactiveListener(this);
+        getServer().getPluginManager().registerEvents(retroactiveListener, this);
+        retroactiveListener.scanAllLoadedChunks();
 
         Bukkit.getLogger().info("");
         Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "  |_______|                             " +
@@ -38,6 +43,9 @@ public class DerexDespawn extends JavaPlugin {
 
     public void reloadConfigValues() {
         configHandler.reload();
+        if (retroactiveListener != null) {
+            retroactiveListener.scanAllLoadedChunks();
+        }
     }
 
     public ConfigHandler getConfigHandler() {
