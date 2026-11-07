@@ -51,11 +51,7 @@ public class PickupListener implements Listener {
 
         Bukkit.getScheduler().runTask(plugin, () -> {
             if (entity.isValid()) {
-                if (plugin.getConfigHandler().isAggressiveDespawn()) {
-                    entity.remove();
-                } else {
-                    entity.setRemoveWhenFarAway(true);
-                }
+                entity.setRemoveWhenFarAway(true);
             }
         });
     }

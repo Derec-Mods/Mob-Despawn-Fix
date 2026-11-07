@@ -12,7 +12,6 @@ public class ConfigHandler {
     private final MobDespawnFix plugin;
     private boolean despawnVehicle;
     private boolean retroactiveDespawnCheck;
-    private boolean aggressiveDespawn;
     private boolean preventPickupPersistence;
     private boolean ignoreNamedMobs;
     private boolean ignoreNamedItems;
@@ -30,7 +29,6 @@ public class ConfigHandler {
         FileConfiguration config = plugin.getConfig();
         despawnVehicle = config.getBoolean("despawn-vehicle", config.getBoolean("despawn-boat", false));
         retroactiveDespawnCheck = config.getBoolean("retroactive-despawn-check", false);
-        aggressiveDespawn = config.getBoolean("aggressive-despawn", false);
         preventPickupPersistence = config.getBoolean("prevent-pickup-persistence", true);
         ignoreNamedMobs = config.getBoolean("ignore-named-mobs", true);
         ignoreNamedItems = config.getBoolean("ignore-named-items", true);
@@ -65,10 +63,6 @@ public class ConfigHandler {
 
     public boolean isRetroactiveDespawnCheck() {
         return retroactiveDespawnCheck;
-    }
-
-    public boolean isAggressiveDespawn() {
-        return aggressiveDespawn;
     }
 
     public boolean isPreventPickupPersistence() {

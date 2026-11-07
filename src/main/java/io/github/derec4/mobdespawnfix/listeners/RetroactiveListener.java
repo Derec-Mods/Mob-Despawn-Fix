@@ -72,11 +72,7 @@ public class RetroactiveListener implements Listener {
                 continue;
             }
 
-            if (plugin.getConfigHandler().isAggressiveDespawn()) {
-                monster.remove();
-            } else {
-                monster.setRemoveWhenFarAway(true);
-            }
+            monster.setRemoveWhenFarAway(true);
         }
     }
 

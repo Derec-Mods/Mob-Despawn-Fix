@@ -11,9 +11,6 @@ despawn-vehicle: false
 # Despawn existing mobs that were marked persistent via holding items
 retroactive-despawn-check: false
 
-# Despawns mobs immediately on item pickup, respecting name rules
-aggressive-despawn: false
-
 prevent-pickup-persistence: true
 ignore-named-mobs: true
 ignore-named-items: true
