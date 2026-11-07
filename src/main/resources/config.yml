@@ -15,7 +15,9 @@ retroactive-despawn-check: false
 # Despawns mobs immediately on item pickup, respecting name rules
 aggressive-despawn: false
 
+prevent-pickup-persistence: true
+ignore-named-mobs: true
+ignore-named-items: true
+
 # Items in this list will not be checked by the despawner
-blacklist:
-#  - diamond_sword
-#  - iron_ingot
+blacklist: []
