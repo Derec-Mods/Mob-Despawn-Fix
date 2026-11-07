@@ -20,8 +20,9 @@ public class MobDespawnFix extends JavaPlugin {
         saveDefaultConfig();
         configHandler = new ConfigHandler(this);
 
-        Objects.requireNonNull(getCommand("mobdespawnfix")).setExecutor(new CommandHandler(this));
-        Objects.requireNonNull(getCommand("mobdespawnfix")).setTabCompleter(new CommandHandler(this));
+        CommandHandler commandHandler = new CommandHandler(this);
+        Objects.requireNonNull(getCommand("mobdespawnfix")).setExecutor(commandHandler);
+        Objects.requireNonNull(getCommand("mobdespawnfix")).setTabCompleter(commandHandler);
 
         getServer().getPluginManager().registerEvents(new PickupListener(this), this);
         retroactiveListener = new RetroactiveListener(this);

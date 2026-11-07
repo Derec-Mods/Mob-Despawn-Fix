@@ -96,7 +96,7 @@ public class ConfigHandler {
     }
 
     public boolean isItemAllowedToDespawn(Material material) {
-        if (material == null || material.isAir()) {
+        if (material == null || material == Material.AIR || material.name().endsWith("_AIR")) {
             return false;
         }
         if ("blacklist".equals(mode)) {

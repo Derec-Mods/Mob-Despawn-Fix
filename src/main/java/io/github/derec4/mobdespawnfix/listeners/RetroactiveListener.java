@@ -3,6 +3,7 @@ package io.github.derec4.mobdespawnfix.listeners;
 import io.github.derec4.mobdespawnfix.MobDespawnFix;
 import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
+import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Monster;
@@ -25,7 +26,12 @@ public class RetroactiveListener implements Listener {
         if (!plugin.getConfigHandler().isRetroactiveDespawnCheck()) {
             return;
         }
-        scanChunk(event.getChunk());
+        Chunk chunk = event.getChunk();
+        Bukkit.getScheduler().runTask(plugin, () -> {
+            if (chunk.isLoaded()) {
+                scanChunk(chunk);
+            }
+        });
     }
 
     public void scanAllLoadedChunks() {
@@ -84,7 +90,7 @@ public class RetroactiveListener implements Listener {
     }
 
     private boolean isItemPresent(ItemStack item) {
-        return item != null && !item.getType().isAir();
+        return item != null && item.getType() != Material.AIR && !item.getType().name().endsWith("_AIR");
     }
 
     private boolean hasProtectedItem(EntityEquipment equipment) {

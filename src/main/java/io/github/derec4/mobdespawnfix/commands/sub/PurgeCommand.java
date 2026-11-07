@@ -2,6 +2,7 @@ package io.github.derec4.mobdespawnfix.commands.sub;
 
 import io.github.derec4.mobdespawnfix.MobDespawnFix;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
@@ -46,17 +47,16 @@ public class PurgeCommand {
                     continue;
                 }
 
+                if (monster.getRemoveWhenFarAway()) {
+                    continue;
+                }
+
                 EntityEquipment equipment = monster.getEquipment();
-                if (equipment == null) {
+                if (equipment == null || !hasAnyEquipment(equipment)) {
                     continue;
                 }
 
-                boolean hasEquip = hasAnyEquipment(equipment);
-                if (!hasEquip && monster.getRemoveWhenFarAway()) {
-                    continue;
-                }
-
-                if (hasEquip && hasProtectedItem(equipment)) {
+                if (hasProtectedItem(equipment)) {
                     continue;
                 }
 
@@ -78,7 +78,7 @@ public class PurgeCommand {
     }
 
     private boolean isItemPresent(ItemStack item) {
-        return item != null && !item.getType().isAir();
+        return item != null && item.getType() != Material.AIR && !item.getType().name().endsWith("_AIR");
     }
 
     private boolean hasProtectedItem(EntityEquipment equipment) {

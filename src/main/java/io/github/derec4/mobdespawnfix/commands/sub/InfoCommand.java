@@ -2,6 +2,7 @@ package io.github.derec4.mobdespawnfix.commands.sub;
 
 import io.github.derec4.mobdespawnfix.MobDespawnFix;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
@@ -81,7 +82,7 @@ public class InfoCommand {
     }
 
     private boolean isItemPresent(ItemStack item) {
-        return item != null && !item.getType().isAir();
+        return item != null && item.getType() != Material.AIR && !item.getType().name().endsWith("_AIR");
     }
 }
 
