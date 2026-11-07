@@ -57,7 +57,7 @@ public class PurgeCommand {
                     continue;
                 }
 
-                if (hasEquip && isBlacklisted(equipment)) {
+                if (hasEquip && hasProtectedItem(equipment)) {
                     continue;
                 }
 
@@ -91,19 +91,22 @@ public class PurgeCommand {
         return item != null && !item.getType().isAir();
     }
 
-    private boolean isBlacklisted(EntityEquipment equipment) {
-        if (plugin.getConfigHandler().getBlacklist().isEmpty()) {
-            return false;
-        }
-        return isItemBlacklisted(equipment.getItemInMainHand())
-                || isItemBlacklisted(equipment.getItemInOffHand())
-                || isItemBlacklisted(equipment.getHelmet())
-                || isItemBlacklisted(equipment.getChestplate())
-                || isItemBlacklisted(equipment.getLeggings())
-                || isItemBlacklisted(equipment.getBoots());
+    private boolean hasProtectedItem(EntityEquipment equipment) {
+        return isItemProtected(equipment.getItemInMainHand())
+                || isItemProtected(equipment.getItemInOffHand())
+                || isItemProtected(equipment.getHelmet())
+                || isItemProtected(equipment.getChestplate())
+                || isItemProtected(equipment.getLeggings())
+                || isItemProtected(equipment.getBoots());
     }
 
-    private boolean isItemBlacklisted(ItemStack item) {
-        return item != null && plugin.getConfigHandler().getBlacklist().contains(item.getType());
+    private boolean isItemProtected(ItemStack item) {
+        if (!isItemPresent(item)) {
+            return false;
+        }
+        if (plugin.getConfigHandler().isIgnoreNamedItems() && item.hasItemMeta() && item.getItemMeta().hasDisplayName()) {
+            return true;
+        }
+        return !plugin.getConfigHandler().isItemAllowedToDespawn(item.getType());
     }
 }

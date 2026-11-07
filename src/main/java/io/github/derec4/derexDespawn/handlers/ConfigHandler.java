@@ -16,6 +16,8 @@ public class ConfigHandler {
     private boolean preventPickupPersistence;
     private boolean ignoreNamedMobs;
     private boolean ignoreNamedItems;
+    private String mode;
+    private final Set<Material> whitelist = new HashSet<>();
     private final Set<Material> blacklist = new HashSet<>();
 
     public ConfigHandler(DerexDespawn plugin) {
@@ -32,6 +34,16 @@ public class ConfigHandler {
         preventPickupPersistence = config.getBoolean("prevent-pickup-persistence", true);
         ignoreNamedMobs = config.getBoolean("ignore-named-mobs", true);
         ignoreNamedItems = config.getBoolean("ignore-named-items", true);
+        mode = config.getString("mode", "whitelist").trim().toLowerCase();
+
+        whitelist.clear();
+        List<String> rawWhitelist = config.getStringList("whitelist");
+        for (String itemName : rawWhitelist) {
+            Material material = Material.matchMaterial(itemName.trim());
+            if (material != null) {
+                whitelist.add(material);
+            }
+        }
 
         blacklist.clear();
         List<String> rawBlacklist = config.getStringList("blacklist");
@@ -67,7 +79,25 @@ public class ConfigHandler {
         return ignoreNamedItems;
     }
 
+    public String getMode() {
+        return mode;
+    }
+
+    public Set<Material> getWhitelist() {
+        return whitelist;
+    }
+
     public Set<Material> getBlacklist() {
         return blacklist;
+    }
+
+    public boolean isItemAllowedToDespawn(Material material) {
+        if (material == null || material.isAir()) {
+            return false;
+        }
+        if ("blacklist".equals(mode)) {
+            return !blacklist.contains(material);
+        }
+        return whitelist.contains(material);
     }
 }

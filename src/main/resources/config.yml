@@ -19,5 +19,49 @@ prevent-pickup-persistence: true
 ignore-named-mobs: true
 ignore-named-items: true
 
+# Mode can be 'whitelist' (only listed items allow despawn) or 'blacklist' (all items allow despawn except listed ones)
+mode: whitelist
+
+whitelist:
+  - rotten_flesh
+  - bone
+  - arrow
+  - string
+  - spider_eye
+  - gunpowder
+  - slime_ball
+  - glow_ink_sac
+  - ink_sac
+  - ender_pearl
+  - egg
+  - feather
+  - raw_chicken
+  - gravel
+  - flint
+  - dirt
+  - cobblestone
+  - stone
+  - torch
+  - redstone_torch
+  - coal
+  - raw_copper
+  - raw_iron
+  - kelp
+  - seagrass
+
 # Items in this list will not be checked by the despawner
-blacklist: []
+blacklist:
+  - diamond
+  - diamond_sword
+  - diamond_helmet
+  - diamond_chestplate
+  - diamond_leggings
+  - diamond_boots
+  - netherite_ingot
+  - netherite_sword
+  - netherite_helmet
+  - netherite_chestplate
+  - netherite_leggings
+  - netherite_boots
+  - totem_of_undying
+  - elytra

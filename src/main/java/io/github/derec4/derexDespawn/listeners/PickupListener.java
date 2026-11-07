@@ -43,7 +43,7 @@ public class PickupListener implements Listener {
             }
         }
 
-        if (plugin.getConfigHandler().getBlacklist().contains(item.getType())) {
+        if (!plugin.getConfigHandler().isItemAllowedToDespawn(item.getType())) {
             return;
         }
 
