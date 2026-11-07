@@ -3,6 +3,7 @@ package io.github.derec4.derexDespawn.commands;
 import io.github.derec4.derexDespawn.DerexDespawn;
 import io.github.derec4.derexDespawn.commands.sub.ReloadCommand;
 import io.github.derec4.derexDespawn.commands.sub.PurgeCommand;
+import io.github.derec4.derexDespawn.commands.sub.InfoCommand;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
@@ -16,11 +17,13 @@ public class CommandHandler implements TabExecutor {
     private final DerexDespawn plugin;
     private final ReloadCommand reloadCommand;
     private final PurgeCommand purgeCommand;
+    private final InfoCommand infoCommand;
 
     public CommandHandler(DerexDespawn plugin) {
         this.plugin = plugin;
         this.reloadCommand = new ReloadCommand(plugin);
         this.purgeCommand = new PurgeCommand(plugin);
+        this.infoCommand = new InfoCommand(plugin);
     }
 
     @Override
@@ -31,7 +34,7 @@ public class CommandHandler implements TabExecutor {
         }
 
         if (args.length == 0) {
-            sender.sendMessage("§cUsage: /ddespawn <reload|purge>");
+            sender.sendMessage("§cUsage: /ddespawn <reload|purge|info>");
             return true;
         }
 
@@ -42,8 +45,11 @@ public class CommandHandler implements TabExecutor {
             case "purge":
                 purgeCommand.execute(sender, args);
                 break;
+            case "info":
+                infoCommand.execute(sender, args);
+                break;
             default:
-                sender.sendMessage("§cUnknown subcommand. Use /ddespawn <reload|purge>");
+                sender.sendMessage("§cUnknown subcommand. Use /ddespawn <reload|purge|info>");
         }
         return true;
     }
@@ -51,7 +57,7 @@ public class CommandHandler implements TabExecutor {
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         if (args.length == 1) {
-            List<String> subcommands = Arrays.asList("reload", "purge");
+            List<String> subcommands = Arrays.asList("reload", "purge", "info");
             List<String> matches = new ArrayList<>();
             for (String sub : subcommands) {
                 if (sub.toLowerCase().startsWith(args[0].toLowerCase())) {

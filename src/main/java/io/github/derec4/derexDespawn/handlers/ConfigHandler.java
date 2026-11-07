@@ -10,7 +10,7 @@ import java.util.Set;
 
 public class ConfigHandler {
     private final DerexDespawn plugin;
-    private boolean despawnBoat;
+    private boolean despawnVehicle;
     private boolean retroactiveDespawnCheck;
     private boolean aggressiveDespawn;
     private boolean preventPickupPersistence;
@@ -28,7 +28,7 @@ public class ConfigHandler {
     public void reload() {
         plugin.reloadConfig();
         FileConfiguration config = plugin.getConfig();
-        despawnBoat = config.getBoolean("despawn-boat", false);
+        despawnVehicle = config.getBoolean("despawn-vehicle", config.getBoolean("despawn-boat", false));
         retroactiveDespawnCheck = config.getBoolean("retroactive-despawn-check", false);
         aggressiveDespawn = config.getBoolean("aggressive-despawn", false);
         preventPickupPersistence = config.getBoolean("prevent-pickup-persistence", true);
@@ -55,8 +55,12 @@ public class ConfigHandler {
         }
     }
 
+    public boolean isDespawnVehicle() {
+        return despawnVehicle;
+    }
+
     public boolean isDespawnBoat() {
-        return despawnBoat;
+        return despawnVehicle;
     }
 
     public boolean isRetroactiveDespawnCheck() {

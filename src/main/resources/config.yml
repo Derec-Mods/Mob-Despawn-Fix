@@ -6,8 +6,7 @@
 
 # Things that will remain default spawning behavior: named mobs, mobs in boats
 
-# Despawn mobs in boats
-despawn-boat: false
+despawn-vehicle: false
 
 # Despawn existing mobs that were marked persistent via holding items
 retroactive-despawn-check: false

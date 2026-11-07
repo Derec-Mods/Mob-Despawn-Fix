@@ -4,7 +4,6 @@ import io.github.derec4.derexDespawn.DerexDespawn;
 import org.bukkit.Bukkit;
 import org.bukkit.Chunk;
 import org.bukkit.World;
-import org.bukkit.entity.Boat;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Monster;
@@ -55,7 +54,7 @@ public class RetroactiveListener implements Listener {
                 continue;
             }
 
-            if (!plugin.getConfigHandler().isDespawnBoat() && isInBoat(monster)) {
+            if (!plugin.getConfigHandler().isDespawnVehicle() && monster.isInsideVehicle()) {
                 continue;
             }
 
@@ -74,15 +73,6 @@ public class RetroactiveListener implements Listener {
                 monster.setRemoveWhenFarAway(true);
             }
         }
-    }
-
-    private boolean isInBoat(LivingEntity entity) {
-        for (Entity vehicle = entity.getVehicle(); vehicle != null; vehicle = vehicle.getVehicle()) {
-            if (vehicle instanceof Boat) {
-                return true;
-            }
-        }
-        return false;
     }
 
     private boolean hasAnyEquipment(EntityEquipment equipment) {
